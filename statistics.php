@@ -4,6 +4,7 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
+
 if(isset($_GET['d1']) && isset($_GET['d2']) && $_GET['d1'] != "" && $_GET['d2'] != ""){
     $products = select_top_products($_GET['d1']." 00:00:00", $_GET['d2']." 23:59:59");
 }
