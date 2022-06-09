@@ -78,7 +78,7 @@ if(isset($_SESSION['username']) && (is_mine($product['id_seller']) || get_user('
                 document.querySelector("article form #category").value = "<?php echo $product['category']; ?>";
             </script>
             <br><br>
-            <button type="submit">Dodaj</button>
+            <button type="submit">Edytuj</button>
         </form>
     </article>
 </section>

@@ -1,8 +1,9 @@
 <?php
 require_once ("main.php");
+
 if(isset($_SESSION['username'])){
     header("Location: index.php");
-    $_SESSION['messages'][] = "Zaloguj się;red";
+    $_SESSION['messages'][] = "Jesteś zalogowany;red";
     exit();
 }
 if(isset($_POST['login']) && isset($_POST['password'])){

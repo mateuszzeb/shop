@@ -26,6 +26,7 @@ function message(text, color="green"){
 }
 window.addEventListener('load', function () {
     const search_input = document.querySelector(".search_input");
+   
     let search_input_on = false;
     search_input.style.width = "0";
     search_input.addEventListener("keydown", function (e){
@@ -185,3 +186,13 @@ function shuffle(sourceArray) {
     }
     return sourceArray;
 }
+function padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+function formatDate(date = new Date()) {
+    return [
+      date.getFullYear(),
+      padTo2Digits(date.getMonth() + 1),
+      padTo2Digits(date.getDate()),
+    ].join('-');
+  }

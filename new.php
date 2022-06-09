@@ -3,8 +3,9 @@ require_once ("main.php");
 if(!isset($_SESSION['username'])){
     header("Location: login.php");
     exit();
+    
 }
-
+$products = get_last_products(24);
 ?>
 
 <!DOCTYPE html>
@@ -23,8 +24,30 @@ if(!isset($_SESSION['username'])){
 require_once ("layout/nav.php");
 ?>
 <section>
-    <article>
-        
+<article class="products_show">
+        <?php
+            if($products->num_rows < 1){
+                if(isset($_GET['q'])){
+                    echo '<h1 class="center">Brak wyników dla: "'.$_GET['q'].'"</h1>';
+                }
+            }
+            else{
+                while($product = $products->fetch_assoc()){
+                    $img = $connect->query("SELECT name FROM images WHERE product_id='".$product['id']."' ORDER BY date LIMIT 1");
+                    if($img->num_rows == 0){
+                        $img = "default.png";
+                    }
+                    else{
+                        $img = $img->fetch_assoc()['name'];
+                    }
+                    $product['price'] = number_format($product['price'],"2", ".", "");
+                    $path = "'img/products/".$img."'";
+                    echo '<a class="div_a" href="product.php?id='.$product['id'].'"><div class="product"><div class="img" style="background-image: url('.$path.');" alt="'.$product['title'].'"></div><h1>'.add_dots($product['title'], 20).'</h1><span>'.$product['price'].' zł</span></div></a>'    ;
+
+                };
+            }
+
+        ?>
     </article>
 </section>
 <?php

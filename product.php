@@ -59,7 +59,7 @@ else{
                 </div>
                 <h1><?php echo $product['pieces']; ?> szt.</h1>
                 <h1><?php echo $product['name']; ?></h1>
-                <h1 class="price"><?php echo $product['price']; ?> PLN</h1>
+                <h1 class="price"><?php echo number_format($product['price'], 2, ".", ""); ?> PLN</h1>
                 <form action="cart.php" method="get">
                     <input type="hidden" name="todo" value="add">
                     <input type="hidden" name="id" value="<?php echo $product['id'] ?>">

@@ -1,9 +1,8 @@
 <footer>
     <div>
         <a href="index.php">Strona główna</a>
-        <a href="#">Okazje</a>
         <a href="new.php">Nowości</a>
-        <a href="#">Kontakt</a>
+        <a href="statistics.php">Statystyki</a>
     </div>
     <div>
         <?php
@@ -17,6 +16,5 @@
     </div>
     <div>
         Mateusz Zębala<br><br>matizeb2@gmail.com<br><br>github.com/mateuszzeb
-        <a href="statistics.php">Statystyki</a>
     </div>
 </footer>

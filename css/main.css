@@ -96,6 +96,15 @@ a.button_a{
     color: #fff;
     padding: 10px 30px;
 }
+button.a_button{
+    color: #7b5df8;
+    background-color: transparent;
+    display: inline;
+    padding: 0;
+}
+button.a_button:hover{
+    box-shadow: none;
+}
 body > header > .left a{
     font-family: 'Fredoka One', sans-serif;
     font-size: 29px;
@@ -920,4 +929,18 @@ form .desc{
 }
 input[type="date"]{
     resize: none;
+}
+.products_show .product:hover{
+    transform: scale(1.02);
+}
+.mobilemenu_btn{
+    padding: 0 20px;
+}
+.hints_div{
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    z-index: 23032;
+    background: red;
+    padding: 32323px;
 }

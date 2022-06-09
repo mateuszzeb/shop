@@ -34,8 +34,8 @@ else{
     <section>
         <article>
             <form action="" method="GET">
-                Od: <input min="0001-01-01" max="9999-12-31" type="date" name="d1" value="<?php if(isset($_GET['d1'])){echo $_GET['d1']; } ?>">
-                Do: <input min="0001-01-01" max="9999-12-31" type="date" name="d2" value="<?php if(isset($_GET['d2'])){echo $_GET['d2']; } ?>">
+                Od: <input id="od" min="01.01.0001" max="31.12.9999" type="date" name="d1" value="<?php if(isset($_GET['d1'])){echo $_GET['d1']; }else{ echo '0001-01-01'; } ?>"> <button type="button" onclick="document.getElementById('od').value = formatDate()" class="a_button">Dziś</button><br><br>
+                Do: <input id="do" min="01.01.0001" max="31.12.9999" type="date" name="d2" value="<?php if(isset($_GET['d2'])){echo $_GET['d2']; }else{ echo '9999-12-31'; } ?>"> <button type="button" onclick="document.getElementById('do').value = formatDate()" name="" class="a_button">Dziś</button><br><br>
                 <button type="submit">Szukaj</button>
                 <br><br>
                 <a href="statistics.php">Wyczyść</a>
@@ -67,12 +67,13 @@ else{
                 const myDatapoints = [];
                 for(let i = 0; i < 5; i++) {
                     if (typeof products[i+1] !== "undefined") {
-                        values.push(products[i+1]['num']);
+                        values.push(products[i+1]['num']*products[i+1]['pieces']);
                         titles.push(products[i+1]['title']);
                         ids.push(products[i+1]['id']);
                         myDatapoints.push({label: products[i+1]['title'], x:products[i+1]['num'], link:"product.php?id"+products[i+1]['id']});
                     }
                 }
+                Chart.defaults.font.size = 20;
                 const data = {
                     labels: titles,
                     datasets: [{
@@ -94,7 +95,15 @@ else{
                     type: 'bar',
                     data: data,
                     options: {
-                       
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    font: {
+                                        size: 20
+                                    }
+                                }
+                            }
+                        }
                     }
                 })
             </script>

@@ -1,3 +1,4 @@
+<h1>s</h1>
 <?php
 require_once("main.php");
 if (!isset($_SESSION['username'])) {

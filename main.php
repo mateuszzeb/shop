@@ -272,7 +272,7 @@ function get_categories(){
 }
 function get_last_products($how_meny){
     global $connect;
-    $products = $connect->query("SELECT * FROM products ORDER BY date LIMIT $how_meny");
+    $products = $connect->query("SELECT * FROM products ORDER BY date DESC LIMIT $how_meny");
     return $products;
 }
 
@@ -357,5 +357,11 @@ function select_top_products($date1="0001-01-01 00:00:00", $date2="9999-12-31 23
     $query = "SELECT products.*, COUNT(orders.id) as num FROM orders INNER JOIN products ON orders.product_id = products.id WHERE orders.date >= '$date1' && orders.date <= '$date2' GROUP BY orders.product_id ORDER BY num DESC";
     $result = $connect->query($query); 
     
+    return $result;
+}
+
+function search_products($q, $l = 5){
+    global $connect;
+    $result = $connect->query("SELECT * FROM products WHERE title LIKE '%$q%' LIMIT $l");
     return $result;
 }
